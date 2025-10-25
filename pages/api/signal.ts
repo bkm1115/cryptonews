@@ -383,21 +383,15 @@ const getTransformersModule = async (): Promise<any | null> => {
     return null;
   }
   if (!transformersModulePromise) {
-    transformersModulePromise = (async () => {
-      try {
-        const dynamicImport = new Function(
-          'specifier',
-          'return import(specifier);'
-        ) as (specifier: string) => Promise<any>;
-        return await dynamicImport('@xenova/transformers');
-      } catch (error) {
+    transformersModulePromise = import('@xenova/transformers')
+      .then((module) => module)
+      .catch((error) => {
         console.warn(
           '[signal] optional transformers module unavailable, falling back to lexicon',
           error
         );
         return null;
-      }
-    })();
+      });
   }
   return transformersModulePromise;
 };
