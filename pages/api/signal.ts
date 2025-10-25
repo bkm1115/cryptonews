@@ -76,6 +76,11 @@ const XLMR_MODEL_CANDIDATES = [
   'Xenova/bert-base-multilingual-uncased-sentiment',
 ].filter(Boolean) as string[];
 
+console.log('[signal] transformers enabled:', ENABLE_TRANSFORMERS);
+console.log('[signal] finbert models:', FINBERT_MODEL_CANDIDATES);
+console.log('[signal] xlm-r models:', XLMR_MODEL_CANDIDATES);
+console.log('[signal] timezone offset minutes:', TIMEZONE_OFFSET_MINUTES);
+
 const POSITIVE_WORDS = new Set([
   'gain',
   'gains',
